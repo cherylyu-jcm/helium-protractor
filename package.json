@@ -1,0 +1,22 @@
+{
+  "name": "helium-protractor",
+  "author": "",
+  "description": "Integration test of Helium",
+  "homepage": "",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allegro-hub/helium-protractor"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-protractor": "^1.0.0",
+    "protractor": "^2.5.1"
+  }
+}
