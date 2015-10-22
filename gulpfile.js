@@ -5,7 +5,7 @@ var protractor = require("gulp-protractor").protractor;
 var path = require('path');
 var child_process = require('child_process');
 
-gulp.src(['./spec/*.js'])
+gulp.src(['./spec/**/*.js'])
   .pipe(protractor({
     configFile: "protractor.config.js"
   }))

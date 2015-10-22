@@ -1,10 +1,11 @@
-var loginPage = new loginPage();
-
-beforeEach(function() {
-  loginPage.get();
-});
+var LoginPage = require('./loginPage');
+var loginPage = new LoginPage();
 
 describe('login', function() {
+
+  beforeEach(function() {
+    loginPage.get();
+  });
 
   describe('success', function() {
     it('should redirect to start quote page after form submitted', function() {
