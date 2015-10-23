@@ -7,31 +7,40 @@ Download and install Java SE Development Kit for your OS:
 (better install the version of 7)
 [http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
 
-### Install npm modules (Gulp and Protractor)
-Go to the project root, and run:
+### Install Protractor
+Use npm to install Protractor globally with:
 ```
-npm install
+npm install -g protractor
 ```
 
 ### Update webdriver-manager
 Download the necessary selenium tools with:
 ```
-./node_modules/protractor/bin/webdriver-manager update
+webdriver-manager update
+```
+Start up a server with:
+```
+webdriver-manager start
 ```
 
-### Run the test!
-Now you can test the flow of http://sit.raamsys.co.uk/: 
-(still has some problems when running ```gulp protractor-run```)
+### Install other needed npm modules
 ```
-gulp protractor-install
+npm install
 ```
 
-### Run single spec!
+## Run the test!
+Now you can test all flow of SIT:
 ```
-gulp protractor-run --specs=runOnlyThisFile.js
+protractor protractor.conf.js
+```
+Or if you want to test a single spec file:
+```
+protractor --specs=runOnlyThisFile.js
 ```
 
+## To modify the settings
+Config file is placed at ```protractor.conf.js```
 
+---
 * Reference:
     * [https://angular.github.io/protractor/#/](https://angular.github.io/protractor/#/)
-    * [https://www.npmjs.com/package/gulp-protractor](https://www.npmjs.com/package/gulp-protractor)
