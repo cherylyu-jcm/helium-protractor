@@ -1,6 +1,6 @@
 var StartPage = function () {
 
-  // input
+  // inputs
   this.isCompany = element.all(by.model('isCompany')).get(0);
   this.isNotCompany = element.all(by.model('isCompany')).get(1);
   this.companyName = element(by.model('companyName'));
