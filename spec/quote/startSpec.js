@@ -4,17 +4,29 @@ var loginPage = new LoginPage();
 var startPage = new StartPage();
 
 
-describe('start', function () {
-  beforeEach(function () {
+describe('start quote page', function () {
+
+  var policyTypeOptions = element.all(by.css('.policy-type-block'));
+
+  beforeAll(function () {
     loginPage.get();
     loginPage.login('test@rentguard.co.uk', '000000');
     startPage.get();
   });
 
-  var policyTypeOptions = element.all(by.css('.policy-type-block'));
-
   it('should have correct length of policy type options', function () {
     expect(policyTypeOptions.count()).toBe(6);
+  });
+
+  it('should display the error messages when leave required fields blank', function () {
+    startPage.createNewPolicy({});
+    expect(startPage.policyTypeRequiredErrorMessage.getText()).toBe('Please provide policy type'); // TODO: test more messages
+  });
+
+  it('should display the error message when input with invalid format', function () {
+    startPage.firstName.sendKeys(007);
+    element(by.css('body')).click(); // make a blur
+    expect(startPage.firstNamePatternErrorMessage.getText()).toBe('Invalid first name'); // TODO: test more messages
   });
 
   it('should highlight policy type when select the option', function () {
@@ -24,30 +36,21 @@ describe('start', function () {
     });
   });
 
-  it('should display the error messages when leave required fields blank', function () {
-    startPage.createNewPolicy({});
-    expect(startPage.policyTypeErrorMessage.getText()).toBe('Please provide policy type'); // TODO: test more messages
-  });
-
-  xit('should show company fields if is company', function () {
-    var formData = {
-      isCompany: true
-    };
-    startPage.createNewPolicy(formData);
-    expect(startPage.companyName.isDisplayed()).toBe(true); // TODO: make the selector more accurate
+  it('should show company fields if is company', function () {
+    startPage.selectIsCompany(true);
+    expect(startPage.companyName.isDisplayed()).toBe(true);
   });
 
   it('should show field to input other title', function () {
-    var formData = {
-      title: 'Other'
-    };
-    startPage.createNewPolicy(formData);
+    startPage.title.sendKeys('Other');
+    element(by.css('body')).click();
     expect(startPage.otherTitle.isDisplayed()).toBe(true);
   });
 
-  xit('should redirect to type of property page after form submitted', function() {
+  it('should redirect to type of property page after form submitted', function() {
+    startPage.get(); // refresh the page
     startPage.createNewPolicy();
-    expect(browser.getCurrentUrl()).toBe('http://localhost:8000/quote/ooi/type-of-property'); // TODO: do not know why it didn't submit
+    expect(browser.getCurrentUrl()).toContain(browser.baseUrl + 'quote/ooi/type-of-property');
   });
 
 });

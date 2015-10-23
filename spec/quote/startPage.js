@@ -1,7 +1,8 @@
 var StartPage = function () {
 
-  this.policyType = element(by.model('$parent.policyType'));
-  this.isCompany = element(by.model('isCompany'));
+  // input
+  this.isCompany = element.all(by.model('isCompany')).get(0);
+  this.isNotCompany = element.all(by.model('isCompany')).get(1);
   this.companyName = element(by.model('companyName'));
   this.isLimitedCompany = element(by.model('isLimitedCompany'));
   this.title = element(by.model('title'));
@@ -10,9 +11,21 @@ var StartPage = function () {
   this.lastName = element(by.model('lastName'));
   this.contactNumber = element(by.model('contactNumber'));
   this.email = element(by.model('email'));
-  this.policyTypeErrorMessage = element(by.xpath('//*[@id="panel-policy-types"]/div[2]/div/span'));
   this.submitBtn = element(by.css('button[type=submit]'));
 
+  // error messages
+  this.policyTypeRequiredErrorMessage = element(by.xpath('//*[@id="panel-policy-types"]/div[2]/div/span'));
+  this.firstNamePatternErrorMessage = element(by.xpath('//*[@id="panel-contact-details"]/div[2]/div[5]/div[1]/div/span[2]'));
+
+  // data
+  this.policyTypeOptions = [
+    'LANDLOARD_HOUSEHOLDER',
+    'OWNER_OCCUPIER',
+    'COMMERCIAL_PROPERTY',
+    'TENANTS_CONTENTS',
+    'LERG_EXPENSES',
+    'COMMERCIAL_COMBINED'
+  ];
   this.normalFormData = {
     policyType: 'OWNER_OCCUPIER',
     isCompany: false,
@@ -33,15 +46,31 @@ var StartPage = function () {
 
   this.createNewPolicy = function (formData) {
     if (!formData) formData = this.normalFormData;
-    this.policyType.sendKeys(formData.policyType);
-    this.isCompany.sendKeys(formData.isCompany);
-    this.title.sendKeys(formData.title);
-    this.firstName.sendKeys(formData.firstName);
-    this.lastName.sendKeys(formData.lastName);
-    this.contactNumber.sendKeys(formData.contactNumber);
-    this.email.sendKeys(formData.email);
+
+    if (formData.policyType) this.choosePolicyType(formData.policyType);
+    if (formData.isCompany) this.selectIsCompany(formData.isCompany);
+    if (formData.title) this.title.sendKeys(formData.title);
+    if (formData.firstName) this.firstName.sendKeys(formData.firstName);
+    if (formData.lastName) this.lastName.sendKeys(formData.lastName);
+    if (formData.contactNumber) this.contactNumber.sendKeys(formData.contactNumber);
+    if (formData.email) this.email.sendKeys(formData.email);
+
     this.submitBtn.click();
     browser.waitForAngular();
+  };
+
+  this.choosePolicyType = function (policyType) {
+    var index = this.policyTypeOptions.indexOf(policyType);
+    var option = element(by.repeater('option in policyTypes').row(index));
+    option.click();
+  };
+
+  this.selectIsCompany = function (isCompany) {
+    if (isCompany) {
+      this.isCompany.click();
+    } else {
+      this.isNotCompany.click();
+    }
   };
 
 };

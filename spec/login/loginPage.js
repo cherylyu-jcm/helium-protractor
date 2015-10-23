@@ -8,6 +8,7 @@ var LoginPage = function() {
   this.passwordErrorMessage = element(by.xpath('//*[@id="main"]/div/div/div/div/div/div/form/div[2]/span[2]'));
 
   this.get = function() {
+    browser.driver.manage().window().maximize();
     browser.driver.manage().deleteAllCookies();
     browser.get('/login');
   };
