@@ -20,10 +20,17 @@ Download the necessary selenium tools with:
 ```
 
 ### Run the test!
-Now you can test the flow of http://sit.raamsys.co.uk/: (still has some problems when running ```gulp protractor-run```)
+Now you can test the flow of http://sit.raamsys.co.uk/: 
+(still has some problems when running ```gulp protractor-run```)
 ```
 gulp protractor-install
 ```
+
+### Run single spec!
+```
+gulp protractor-run --specs=runOnlyThisFile.js
+```
+
 
 * Reference:
     * [https://angular.github.io/protractor/#/](https://angular.github.io/protractor/#/)
