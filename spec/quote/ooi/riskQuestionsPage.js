@@ -27,10 +27,6 @@ var riskQuestionsPage = function() {
       question.findElement(By.css('input[ng-value=true]')).click();
 
     });
-
-    // angular.forEach(, function(question) {
-    //   element(by.css('input[value=' + question.correctAnswer + ']'));
-    // });
   };
 
 };
