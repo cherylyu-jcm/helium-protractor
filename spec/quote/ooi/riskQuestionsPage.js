@@ -23,13 +23,9 @@ var riskQuestionsPage = function() {
 
   this.answerAllQuestions = function() {
     this.riskQuestions.each(function(question, index) {
-      browser.pause();
       question.findElement(By.css('input[ng-value=true]')).click();
-
     });
   };
-
 };
-
 
 module.exports = riskQuestionsPage;
