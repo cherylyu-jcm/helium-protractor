@@ -38,20 +38,18 @@ describe('Risk questions with FCA Agnet', function() {
     riskQuestionsPage.answerAllQuestionsToYes();
     riskQuestionsPage.confirmBox.click();
     riskQuestionsPage.submitBtn.click();
-    expect(riskQuestionsPage.referBox.isPresent()).toBeTruthy();
+    expect(riskQuestionsPage.referBox.isDisplayed()).toBeTruthy();
   });
 
-  // TODO: unfinish
   it('should show class:rejected when selected non-default answer', function() {
     riskQuestionsPage.answerAllQuestionsToYes();
-    // expect css.reject.length > 0
+    expect(element(by.css('.rejected')).isPresent()).toBeTruthy();
   });
 
   it('should display alert box when leave confirm box empty', function() {
     riskQuestionsPage.allOkBtn.click();
     riskQuestionsPage.submitBtn.click();
     expect(riskQuestionsPage.sweetAlert.isPresent()).toBeTruthy();
-
   });
 
 });
