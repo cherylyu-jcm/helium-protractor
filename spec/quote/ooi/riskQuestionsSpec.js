@@ -24,7 +24,7 @@ describe('Risk questions with FCA Agnet', function() {
 
   it('should checked confirm box', function() {
     riskQuestionsPage.confirmBox.click();
-    expect(riskQuestionsPage.confirmBox).toBeTruthy();
+    expect(riskQuestionsPage.confirmBox.attr('checked')).toBeTruthy();
   });
 
   it('should redirect to policy holder page after all questions answered and for submitted', function() {
