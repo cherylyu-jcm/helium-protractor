@@ -26,7 +26,7 @@ var StartPage = function () {
     'LERG_EXPENSES',
     'COMMERCIAL_COMBINED'
   ];
-  this.normalFormData = {
+  this.testingFormData = {
     policyType: 'OWNER_OCCUPIER',
     isCompany: false,
     companyName: '',
@@ -45,7 +45,7 @@ var StartPage = function () {
   };
 
   this.createNewPolicy = function (formData) {
-    if (!formData) formData = this.normalFormData;
+    if (!formData) formData = this.testingFormData;
 
     if (formData.policyType) this.choosePolicyType(formData.policyType);
     if (formData.isCompany) this.selectIsCompany(formData.isCompany);

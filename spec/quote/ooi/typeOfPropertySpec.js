@@ -11,7 +11,6 @@ describe('type of property page', function () {
   beforeAll(function () {
     loginPage.get();
     loginPage.login('test@rentguard.co.uk', '000000');
-    startPage.get();
     startPage.createNewPolicy();
   });
 

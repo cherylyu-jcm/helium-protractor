@@ -11,10 +11,6 @@ var TypeOfPropertyPage = function () {
   this.typeOfPropertyRequiredErrorMessage = element(by.xpath('//*[@id="main"]/div[2]/div/div/div/ui-view/form/div[1]/div[2]/div[7]/span'));
 
 
-  this.get = function () {
-    browser.get('/type-of-property/:policyReferenceNumber');
-  };
-
   this.chooseTypeOfProperty = function (typeOfProperty) {
     this.options.each(function(option, index) {
       var target = option.getAttribute('value').then(function(val) {
