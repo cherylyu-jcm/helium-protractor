@@ -1,4 +1,4 @@
-var LoginPage = require('../login/loginPage');
+var LoginPage = require('./../login/loginPage');
 var StartPage = require('./startPage');
 var loginPage = new LoginPage();
 var startPage = new StartPage();

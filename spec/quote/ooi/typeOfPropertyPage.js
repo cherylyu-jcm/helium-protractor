@@ -5,7 +5,6 @@ var TypeOfPropertyPage = function () {
   this.groupHouse = element(by.repeater('buildingTypeGroup in buildingTypeGroups').row(0));
   this.groupBungalow = element(by.repeater('buildingTypeGroup in buildingTypeGroups').row(2));
   this.options = element.all(by.model('$parent.$parent.typeOfProperty'));
-  this.firstOptionOfHouse = this.options.get(1);
   this.submitBtn = element(by.css('button[type=submit]'));
 
   // error messages
@@ -16,12 +15,20 @@ var TypeOfPropertyPage = function () {
     browser.get('/type-of-property/:policyReferenceNumber');
   };
 
-  this.choosePropertyGroup = function (group) {
-
+  this.chooseTypeOfProperty = function (typeOfProperty) {
+    this.options.each(function(option, index) {
+      var target = option.getAttribute('value').then(function(val) {
+        if (val === typeOfProperty) {
+          option.click();
+        }
+      });
+    });
   };
 
-  this.chooseTypeOfProperty = function (typeOfProperty) {
-    this.firstOptionOfHouse.click();
+  this.updateTypeOfProperty = function (typeOfProperty) {
+    if (typeOfProperty) {
+      this.chooseTypeOfProperty(typeOfProperty);
+    }
     this.submitBtn.click();
     browser.waitForAngular();
   };
