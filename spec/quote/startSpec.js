@@ -1,4 +1,4 @@
-var LoginPage = require('../login/loginPage');
+var LoginPage = require('./../login/loginPage');
 var StartPage = require('./startPage');
 var loginPage = new LoginPage();
 var startPage = new StartPage();
@@ -11,19 +11,18 @@ describe('start quote page', function () {
   beforeAll(function () {
     loginPage.get();
     loginPage.login('test@rentguard.co.uk', '000000');
-    startPage.get();
   });
 
   it('should have correct length of policy type options', function () {
     expect(policyTypeOptions.count()).toBe(6);
   });
 
-  it('should display the error messages when leave required fields blank', function () {
+  it('should display the error messages when leaving required fields blank', function () {
     startPage.createNewPolicy({});
     expect(startPage.policyTypeRequiredErrorMessage.getText()).toBe('Please provide policy type'); // TODO: test more messages
   });
 
-  it('should display the error message when input with invalid format', function () {
+  it('should display the error messages when inputting with invalid format', function () {
     startPage.firstName.sendKeys(007);
     element(by.css('body')).click(); // make a blur
     expect(startPage.firstNamePatternErrorMessage.getText()).toBe('Invalid first name'); // TODO: test more messages
