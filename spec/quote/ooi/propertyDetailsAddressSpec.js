@@ -47,7 +47,6 @@ describe('property details address page', function () {
   });
 
   it('should redirect to property details building page after form submitted', function() {
-    propertyDetailsAddressPage.postcode.clear();
     propertyDetailsAddressPage.updatePropertyDetailsAddress();
     expect(browser.getCurrentUrl()).toContain(browser.baseUrl + 'quote/ooi/property-details-building');
   });
