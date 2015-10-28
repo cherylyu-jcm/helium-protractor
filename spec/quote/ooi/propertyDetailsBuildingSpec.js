@@ -15,10 +15,9 @@ describe('property details building page', function () {
   beforeAll(function () {
     loginPage.get();
     loginPage.login('test@rentguard.co.uk', '000000');
-    // startPage.createNewPolicy();
-    // typeOfPropertyPage.updateTypeOfProperty('House (Detached)');
-    // propertyDetailsAddressPage.updatePropertyDetailsAddress();
-    browser.get('/quote/ooi/property-details-building/N20111001');
+    startPage.createNewPolicy();
+    typeOfPropertyPage.updateTypeOfProperty('House (Detached)');
+    propertyDetailsAddressPage.updatePropertyDetailsAddress();
   });
 
   it('should display the error messages when leaving required fields blank', function () {

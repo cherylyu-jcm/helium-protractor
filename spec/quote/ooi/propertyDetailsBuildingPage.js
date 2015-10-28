@@ -4,7 +4,7 @@ var PropertyDetailsBuildingPage = function () {
   this.bedroomNumber = element(by.model('bedroomNumber'));
   this.buildingYear = element(by.model('buildingYear'));
   this.buildingType = element(by.model('buildingType'));
-  this.propertyListed = element(by.model('propertyListed'));
+  this.listedBuilding = element(by.model('listedBuilding'));
   this.floorConstruction = element(by.model('floorConstruction'));
 
   this.wallConstrMaterial = element(by.model('wallConstrMaterial'));
@@ -45,7 +45,7 @@ var PropertyDetailsBuildingPage = function () {
     bedroomNumber: 1,
     buildingYear: 2015,
     buildingType: 'House (Unspecified)',
-    propertyListed: 'Grade I / Scottish A / NI A',
+    listedBuilding: 'Grade I / Scottish A / NI A',
     floorConstruction: 'Concrete',
     wallConstructions: [
       {
@@ -126,7 +126,7 @@ var PropertyDetailsBuildingPage = function () {
     if (formData.bedroomNumber) this.bedroomNumber.sendKeys(formData.bedroomNumber);
     if (formData.buildingYear) this.buildingYear.sendKeys(formData.buildingYear);
     if (formData.buildingType) this.buildingType.sendKeys(formData.buildingType);
-    if (formData.propertyListed) this.propertyListed.sendKeys(formData.propertyListed);
+    if (formData.listedBuilding) this.listedBuilding.sendKeys(formData.listedBuilding);
     if (formData.floorConstruction) this.floorConstruction.sendKeys(formData.floorConstruction);
 
     if (formData.wallConstructions) {
