@@ -22,7 +22,7 @@ describe('type of property page', function () {
   it('should highlight group icon when user click any option of that group', function () {
     var activedBadge = typeOfPropertyPage.groupBungalow.element(by.css('.group-badge'));
     typeOfPropertyPage.chooseTypeOfProperty('Bungalow (Detached)');
-    expect(activedBadge.getAttribute('class')).toMatch('group-badge active');
+    expect(activedBadge.getAttribute('class')).toMatch('active');
   });
 
   it('should auto select the first option when user click the group icon', function () {

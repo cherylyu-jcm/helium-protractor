@@ -36,6 +36,8 @@ var PropertyDetailsAddressPage = function () {
   this.updatePropertyDetailsAddress = function (formData) {
     if (!formData) formData = this.testingFormData;
 
+    this.postcode.clear();
+
     if (formData.postcode) this.postcode.sendKeys(formData.postcode);
     if (formData.line1) this.line1.sendKeys(formData.line1);
     if (formData.line2) this.line2.sendKeys(formData.line2);
